@@ -1,4 +1,11 @@
 /* FULL PAGE */
+body {
+  margin: 0;
+  padding: 0;
+  font-family: Arial, sans-serif;
+  overflow-x: hidden; /* prevent horizontal scroll */
+}
+
 .landing {
   width: 100vw;
   min-height: 100vh;
@@ -9,7 +16,7 @@
 .hero {
   position: relative;
   width: 100vw;
-  height: 100vh;
+  min-height: calc(100vh - 80px); /* account for navbar */
 }
 
 /* IMAGE SLIDESHOW */
@@ -57,14 +64,18 @@
   position: absolute;
   inset: 0;
   z-index: 2;
+
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
+
   text-align: center;
-  padding: 0 20px;
+  padding: 100px 20px 40px; /* top padding for navbar */
   color: white;
   background: rgba(0, 0, 0, 0.45);
+
+  overflow-y: auto; /* allow scrolling if text is too long */
 }
 
 .text-overlay h1 {
@@ -88,4 +99,20 @@
   padding: 80px 20px;
   background: #fff;
   text-align: center;
+}
+
+/* MOBILE RESPONSIVENESS */
+@media (max-width: 768px) {
+  .text-overlay {
+    justify-content: flex-start;
+    padding: 120px 15px 40px;
+  }
+
+  .text-overlay h1 {
+    font-size: 2.2rem;
+  }
+
+  .text-overlay p {
+    font-size: 1rem;
+  }
 }
