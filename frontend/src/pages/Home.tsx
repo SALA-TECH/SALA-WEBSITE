@@ -1,9 +1,13 @@
 import "../stylesheets/Landing.css";
+import NavBar from "../components/NavBar";
+import Logo from "/images/logo.png"; // logo in public/images
 
 // Images are served from /public/images (NO imports needed)
 
 function Home() {
   return (
+    <>
+    <NavBar brandName="SALA" logoSrc={Logo} />
     <main className="landing">
       {/* HERO SECTION */}
       <section className="hero">
@@ -58,6 +62,9 @@ function Home() {
         {/* category cards will go here later */}
       </section>
     </main>
+
+    </>
+    
   );
 }
 
