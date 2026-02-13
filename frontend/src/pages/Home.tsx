@@ -1,67 +1,80 @@
-import "../stylesheets/Landing.css";
-import NavBar from "../components/NavBar";
-import Logo from "/images/logo.png"; // logo in public/images
+import React, { useState } from 'react';
+import '../stylesheets/App.css';
+import { FaArrowRight, FaChevronLeft, FaChevronRight } from 'react-icons/fa';
 
-function Home() {
+
+import MediaSection from "../components/MediaSection";
+import AboutUsSection from "../components/AboutUsSection"
+import NavigationBar from "../components/NavigationBar"
+
+const App: React.FC = () => {
+
+  // State to track the current slide index
+  const [currentSlide, setCurrentSlide] = useState(0);
+
+  
+
+  // Array of slides with different content
+  const slides = [
+    {
+      title: "South African Legacy Association",
+      text: "A non-profit organization with over 700 members, including young professionals, students, and entrepreneurs from diverse backgrounds like Law, Medicine, and Engineering.",
+      buttonText: "Get in Touch",
+    },
+    {
+      title: "Empowering Communities",
+      text: "We believe in empowering communities through education, mentorship, and skill development. Join us in making a difference and creating a brighter future for everyone.",
+      buttonText: "Get in Touch",
+    },
+    {
+      title: "Objective",
+      text: "It aims to provide a platform for mentoring, networking, community development, and influencing the country's socio-economic landscape. The organization was founded to combat social issues such as unemployment and skills deficits.",
+      buttonText: "Get in Touch",
+    },
+  ];
+
+  // Function to handle the next slide
+  const handleNext = () => {
+    setCurrentSlide((prevSlide) => (prevSlide + 1) % slides.length);
+  };
+
+  // Function to handle the previous slide
+  const handlePrev = () => {
+    setCurrentSlide((prevSlide) => (prevSlide - 1 + slides.length) % slides.length);
+  };
+
   return (
-    <>
-      <NavBar brandName="SALA" logoSrc={Logo} />
-      <main className="landing">
-        {/* HERO SECTION */}
-        <section className="hero">
-          {/* FIXED TEXT OVERLAY */}
-          <section className="text-overlay">
-            <h1>Who is SALA?</h1>
-            <p>
-              SALA is a registered non-profit organization established in 2022 by
-              a diverse group of young professionals and students from various
-              fields, including law, accounting, medicine, and engineering. To
-              date, our network has grown to over 500 dedicated members,
-              predominantly from the historically disadvantaged Pondoland areas of
-              Lusikisiki, Flagstaff, and Port St. Johns in the Eastern Cape.
-            </p>
+    <div>
+      {/* --- Navbar --- */}
+      <NavigationBar/>
+    
 
-            <h2>Our Mission</h2>
-            <p>
-              To provide a platform for individuals from disadvantaged backgrounds
-              – including high school learners, university students, and young
-              professionals for career, business and community development.
-            </p>
+      {/* --- Home Section --- */}
+      <header id="home" className="hero">
+        <div className="hero-overlay"></div>
+        
+        {/* Navigation Arrows */}
+        <div className="nav-arrow prev" onClick={handlePrev}><FaChevronLeft /></div>
+        <div className="nav-arrow next" onClick={handleNext}><FaChevronRight /></div>
 
-            <h2>Our Vision</h2>
-            <p>
-              To cultivate a future where every individual, regardless of
-              background, has equal access to opportunities, empowerment, and
-              success through education, mentorship, and professional development.
-            </p>
-          </section>
+        <div className="hero-content">
+          <h1 className="hero-title">{slides[currentSlide].title}</h1>
+          <p className="hero-text">{slides[currentSlide].text}</p>
+          <button className="btn-primary">
+            {slides[currentSlide].buttonText} <FaArrowRight />
+          </button>
+        </div>
+      </header>
 
-          {/* FADE IMAGE SLIDESHOW */}
-          <section className="image-slider">
-            {[
-              "/images/IMG-20250702-WA0031.jpg",
-              "/images/IMG-20250703-WA0056.jpg",
-              "/images/IMG-20250715-WA0002.jpg",
-              "/images/IMG-20251230-WA0005.jpg",
-              "/images/IMG-20250702-WA0031.jpg",
-              "/images/IMG-20250703-WA0056.jpg",
-              "/images/IMG-20250715-WA0001.jpg",
-              "/images/IMG-20250715-WA0002.jpg",
-              "/images/IMG-20251230-WA0005.jpg",
-            ].map((src, index) => (
-              <img key={index} src={src} alt={`Slide ${index + 1}`} />
-            ))}
-          </section>
-        </section>
+      {/* --- About Section --- */}
+      <AboutUsSection/>
 
-        {/* CATEGORIES SECTION (BELOW HERO) */}
-        <section className="categories">
-          <h2>Explore Categories</h2>
-          {/* category cards will go here later */}
-        </section>
-      </main>
-    </>
+
+      {/* --- Media Section --- */}
+      <MediaSection/>
+
+    </div>
   );
-}
+};
 
-export default Home;
+export default App;
