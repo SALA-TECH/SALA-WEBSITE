@@ -106,6 +106,46 @@ body {
   color: #fff;
 }
 
+/* Relative positioning on the parent LI allows the dropdown 
+   to position itself relative to this item */
+.dropdown-wrapper {
+  position: relative;
+}
+
+.dropdown-menu {
+  position: absolute;
+  top: 100%; /* Positions it directly below the "Pages" text */
+  left: 0;
+  background-color: #ffffff; /* White background like screenshot */
+  min-width: 180px;
+  list-style: none;
+  padding: 10px 0;
+  border-radius: 4px; /* Slight rounded corners */
+  box-shadow: 0 5px 15px rgba(0,0,0,0.15); /* Drop shadow for depth */
+  z-index: 1000;
+  margin-top: 15px; /* Tiny gap between nav and dropdown */
+  display: flex;
+  flex-direction: column;
+}
+
+/* Style the links INSIDE the dropdown differently than the main nav */
+.dropdown-menu li a {
+  display: block;
+  padding: 8px 20px;
+  color: #1a1a1a; /* Dark text */
+  font-size: 15px;
+  font-weight: 500;
+  text-decoration: none;
+  white-space: nowrap; /* Prevents text wrapping */
+  transition: background-color 0.3s, color 0.3s;
+}
+
+/* Hover effect for dropdown items */
+.dropdown-menu li a:hover {
+  background-color: #f8f9fa; /* Light grey background on hover */
+  color: var(--primary-orange); /* Orange text on hover */
+}
+
 /* --- Hero Section --- */
 .hero {
   position: relative;
@@ -203,6 +243,13 @@ body {
 .about-section {
   padding: 100px 0;
   background-color: #fff;
+  height: 100vh;
+}
+
+/* --- About Section --- */
+.media-section {
+  padding: 100px 0;
+  background-color: var(--bg-light)
 }
 
 .about-grid {
@@ -252,7 +299,9 @@ body {
   padding: 8px 20px;
   border-radius: 4px;
   font-weight: 600;
-  margin-bottom: 20px;
+  margin-top: 5px;
+  font-size: 30px;
+  /* align-items: center; */
 }
 
 .section-title {
@@ -271,4 +320,51 @@ body {
   background-color: var(--bg-light);
   padding: 20px;
   border-left: 4px solid var(--primary-orange);
+}
+
+/* --- Media Section --- */
+.media-section {
+  padding: 80px 20px;
+  background-color: var(--bg-light);
+  text-align: center;
+  position: relative;
+  height: 100vh;
+}
+
+.media-section .subtitle-badge {
+  position: relative;
+  display: inline-block;
+  margin-bottom: 40px;
+  font-size: 24px;
+  font-weight: 700;
+  color: var(--primary-orange);
+  text-transform: uppercase;
+}
+
+.media-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); /* Responsive grid */
+  gap: 20px; /* Space between images */
+  justify-content: center;
+  align-items: center;
+}
+
+.media-item {
+  overflow: hidden;
+  border-radius: 10px; /* Rounded corners for images */
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Add a subtle shadow */
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.media-item:hover {
+  transform: scale(1.06); /* Slight zoom effect on hover */
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2); /* Enhance shadow on hover */
+}
+
+.media-img {
+  width: 100%; /* Ensure the image fills the container */
+  height: 200px; /* Set a fixed height for uniformity */
+  object-fit: cover; /* Crop the image to fit the container */
+  display: block;
+  border-radius: 10px;
 }

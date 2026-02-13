@@ -15,6 +15,15 @@ const App: React.FC = () => {
   // State to track the current slide index
   const [currentSlide, setCurrentSlide] = useState(0);
 
+  // State to manage dropdown visibility
+  const [isDropdownOpen, setIsDropdownOpen] = useState(false);
+
+  // Helper to toggle the dropdown
+  const toggleDropdown = (e: React.MouseEvent) => {
+    e.preventDefault(); // Prevent default anchor link behavior
+    setIsDropdownOpen(!isDropdownOpen);
+  };
+
   // Array of slides with different content
   const slides = [
     {
@@ -57,12 +66,23 @@ const App: React.FC = () => {
           <ul className="nav-links">
             <li><a href="#home" className="active">Home</a></li>
             <li><a href="#about">About Us</a></li>
-            <li><a href="#causes">Projects</a></li>
-            <li><a href="#causes">Media</a></li>
-            <li><a href="#causes">News</a></li>
+            <li><a href="#projects">Projects</a></li>
+            <li><a href="#media">Media</a></li>
             <li><a href="#contact">Contact</a></li>
-            <li>
-              <a href="#pages">Pages <FaChevronDown className="dropdown-indicator"/></a>
+            <li className="dropdown-wrapper">
+              <a href="#pages" onClick={toggleDropdown} className={isDropdownOpen ? "active" : ""}>Pages <FaChevronDown className="dropdown-indicator"/></a>
+
+              {/* 5. Conditional rendering: Only show if isDropdownOpen is true */}
+              {isDropdownOpen && (
+              <ul className="dropdown-menu">
+                <li><a href="#service">Online Library</a></li>
+                <li><a href="#donate">News</a></li>
+                {/* <li><a href="#team">Our Team</a></li>
+                <li><a href="#testimonial">Testimonial</a></li>
+                <li><a href="#404">404 Page</a></li> */}
+              </ul>
+            )}
+
             </li>
           </ul>
           <button className="btn-donate">
@@ -90,6 +110,7 @@ const App: React.FC = () => {
 
       {/* --- About Section --- */}
       <section id="about" className="about-section">
+        <span className="subtitle-badge">About Us</span>
         <div className="container about-grid">
           
           {/* Left: Image Collage */}
@@ -110,7 +131,7 @@ const App: React.FC = () => {
 
           {/* Right: Content */}
           <div className="about-content">
-            {/* <span className="subtitle-badge">About Us</span> */}
+            
             <h2 className="section-title">
               Our Mission
             </h2>
@@ -138,6 +159,39 @@ const App: React.FC = () => {
 
         </div>
       </section>
+
+
+      {/* --- Media Section --- */}
+      <section id="media" className="media-section">
+        <span className="subtitle-badge">Media</span>
+        <div className="container media-grid">
+          <div className="media-item">
+            <img src={image2} alt="Media 1" className="media-img" />
+          </div>
+          <div className="media-item">
+            <img src={image3} alt="Media 2" className="media-img" />
+          </div>
+          <div className="media-item">
+            <img src={image2} alt="Media 3" className="media-img" />
+          </div>
+          <div className="media-item">
+            <img src={image3} alt="Media 4" className="media-img" />
+          </div>
+          <div className="media-item">
+            <img src={image2} alt="Media 5" className="media-img" />
+          </div>
+          <div className="media-item">
+            <img src={image2} alt="Media 5" className="media-img" />
+          </div>
+          <div className="media-item">
+            <img src={image2} alt="Media 5" className="media-img" />
+          </div>
+          <div className="media-item">
+            <img src={image3} alt="Media 6" className="media-img" />
+          </div>
+        </div>
+      </section>
+
     </div>
   );
 };
