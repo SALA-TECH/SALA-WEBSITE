@@ -1,7 +1,7 @@
 import React from 'react';
 import '../stylesheets/App.css';
 import NavigationBar from '../components/NavigationBar';
-import { FaBookOpen, FaFileAlt, FaChalkboardTeacher, FaLaptop, FaArrowRight, FaClock, FaGraduationCap, FaSearch, FaFlask, FaCalculator, FaLanguage, FaLandmark, FaMicroscope, FaChartLine, FaCode, FaHeartbeat } from 'react-icons/fa';
+import { FaBookOpen, FaChalkboardTeacher, FaLaptop, FaArrowRight, FaClock, FaGraduationCap, FaSearch, FaFlask, FaCalculator, FaLanguage, FaLandmark, FaMicroscope, FaChartLine, FaCode, FaHeartbeat } from 'react-icons/fa';
 
 const Library: React.FC = () => {
   return (
