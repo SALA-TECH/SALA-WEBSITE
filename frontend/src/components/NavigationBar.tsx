@@ -1,63 +1,181 @@
-import React, { useState} from "react";
+import React, { useState } from "react";
+import { FaArrowRight, FaChevronDown, FaTimes, FaBars, FaChevronRight } from 'react-icons/fa';
+import { Link, useNavigate } from 'react-router-dom';
+import Logo from '../../public/images/logo.png';
 
-import { 
-  FaArrowRight, 
-  FaChevronDown 
-} from 'react-icons/fa';
+interface NavItem {
+  label: string;
+  href?: string;
+  subItems?: { label: string; href: string }[];
+}
 
-import Logo from '../../public/images/logo.png'
+const navItems: NavItem[] = [
+  { label: "Home", href: "/" },
+  { label: "About Us", href: "/about" },
+  { label: "Projects", href: "/projects" },
+  { label: "Media", href: "/media" },
+  { label: "Contact", href: "/contact" },
+  {
+    label: "Pages",
+    subItems: [
+      { label: "Online Library", href: "/library" },
+      { label: "News", href: "/news" },
+    ],
+  },
+];
 
-const MediaSection: React.FC = () => {
-
-  // State to manage dropdown visibility
+const NavigationBar: React.FC = () => {
   const [isDropdownOpen, setIsDropdownOpen] = useState(false);
+  const [isSidebarOpen, setIsSidebarOpen] = useState(false);
+  const [activeMobileMenu, setActiveMobileMenu] = useState<string | null>(null);
+  const navigate = useNavigate();
 
-  // Helper to toggle the dropdown
   const toggleDropdown = (e: React.MouseEvent) => {
-    e.preventDefault(); // Prevent default anchor link behavior
+    e.preventDefault();
     setIsDropdownOpen(!isDropdownOpen);
   };
 
+  const openSidebar = () => {
+    setIsSidebarOpen(true);
+    setActiveMobileMenu(null);
+  };
+
+  const closeSidebar = () => {
+    setIsSidebarOpen(false);
+    setActiveMobileMenu(null);
+  };
+
+  const handleMobileItemClick = (item: NavItem) => {
+    if (item.subItems && item.subItems.length > 0) {
+      // Has sub-menus — drill in
+      setActiveMobileMenu(item.label);
+    } else {
+      // No sub-menus — navigate and close
+      if (item.href) navigate(item.href);
+      closeSidebar();
+    }
+  };
+
+  const handleSubItemClick = (href: string) => {
+    navigate(href);
+    closeSidebar();
+  };
+
+  const currentSubItems = navItems.find(i => i.label === activeMobileMenu)?.subItems ?? [];
 
   return (
-    
     <div>
-        <nav className="navbar">
-          <div className="container nav-container">
-            <a className="logo">
-              <img src={Logo} alt="SALA" className="navbar-logo" />
-              SA<span>LA</span>
-            </a>
+      {/* ── Navbar ── */}
+      <nav className="navbar">
+        <div className="container nav-container">
 
-            <ul className="nav-links">
-              <li><a href="#home" className="active">Home</a></li>
-              <li><a href="#about">About Us</a></li>
-              <li><a href="#projects">Projects</a></li>
-              <li><a href="#media">Media</a></li>
-              <li><a href="#contact">Contact</a></li>
-              <li className="dropdown-wrapper">
-                <a href="#pages" onClick={toggleDropdown} className={isDropdownOpen ? "active" : ""}>Pages <FaChevronDown className="dropdown-indicator"/></a>
+          {/* Logo */}
+          <Link className="logo" to="/">
+            <img src={Logo} alt="SALA" className="navbar-logo" />
+            SA<span>LA</span>
+          </Link>
 
-                {/* 5. Conditional rendering: Only show if isDropdownOpen is true */}
-                {isDropdownOpen && (
-                <ul className="dropdown-menu">
-                  <li><a href="#service">Online Library</a></li>
-                  <li><a href="#donate">News</a></li>
-                  {/* <li><a href="#team">Our Team</a></li>
-                  <li><a href="#testimonial">Testimonial</a></li>
-                  <li><a href="#404">404 Page</a></li> */}
-                </ul>
-              )}
+          {/* Desktop links — hidden on mobile */}
+          <ul className="nav-links nav-links-desktop">
+            {navItems.map((item) =>
+              item.subItems ? (
+                <li key={item.label} className="dropdown-wrapper">
+                  <a href="#pages" onClick={toggleDropdown} className={isDropdownOpen ? "active" : ""}>
+                    {item.label} <FaChevronDown className="dropdown-indicator" />
+                  </a>
+                  {isDropdownOpen && (
+                    <ul className="dropdown-menu">
+                      {item.subItems.map((sub) => (
+                        <li key={sub.label}>
+                          <Link to={sub.href}>{sub.label}</Link>
+                        </li>
+                      ))}
+                    </ul>
+                  )}
+                </li>
+              ) : (
+                <li key={item.label}>
+                  <Link to={item.href || '/'}>{item.label}</Link>
+                </li>
+              )
+            )}
+          </ul>
 
+          {/* Desktop Login button — hidden on mobile */}
+          <Link to="/login" className="btn-donate nav-links-desktop">
+            Login <FaArrowRight />
+          </Link>
+
+          {/* Hamburger — mobile only */}
+          <button className="mobile-hamburger" onClick={openSidebar} aria-label="Open menu">
+            <FaBars />
+          </button>
+
+        </div>
+      </nav>
+
+      {/* ── Dark overlay behind sidebar ── */}
+      {isSidebarOpen && <div className="sidebar-overlay" onClick={closeSidebar} />}
+
+      {/* ── Sidebar panel ── */}
+      <div className={`mobile-sidebar ${isSidebarOpen ? "sidebar-open" : ""}`}>
+
+        {/* Sidebar top: logo + X */}
+        <div className="sidebar-header">
+          <Link className="logo sidebar-logo" to="/" onClick={closeSidebar}>
+            <img src={Logo} alt="SALA" className="navbar-logo" />
+            SA<span>LA</span>
+          </Link>
+          <button className="sidebar-close" onClick={closeSidebar} aria-label="Close menu">
+            <FaTimes />
+          </button>
+        </div>
+
+        {/* Sidebar content */}
+        <div className="sidebar-body">
+
+          {activeMobileMenu === null ? (
+            // ── Main menu ──
+            <ul className="sidebar-nav">
+              {navItems.map((item) => (
+                <li key={item.label} className="sidebar-nav-item">
+                  <button className="sidebar-nav-btn" onClick={() => handleMobileItemClick(item)}>
+                    <span>{item.label}</span>
+                    {item.subItems && <FaChevronRight className="sidebar-arrow" />}
+                  </button>
+                </li>
+              ))}
+              {/* Login button inside sidebar */}
+              <li className="sidebar-nav-item">
+                <Link to="/login" className="btn-donate sidebar-login-btn" onClick={closeSidebar}>
+                  Login <FaArrowRight />
+                </Link>
               </li>
             </ul>
-            <button className="btn-donate">
-              Login <FaArrowRight />
-            </button>
-          </div>
-        </nav>
+
+          ) : (
+            // ── Sub-menu ──
+            <ul className="sidebar-nav">
+              <li className="sidebar-nav-item sidebar-back-item">
+                <button className="sidebar-back-btn" onClick={() => setActiveMobileMenu(null)}>
+                  ← Back
+                </button>
+                <span className="sidebar-submenu-title">{activeMobileMenu}</span>
+              </li>
+              {currentSubItems.map((sub) => (
+                <li key={sub.label} className="sidebar-nav-item">
+                  <button className="sidebar-nav-btn" onClick={() => handleSubItemClick(sub.href)}>
+                    <span>{sub.label}</span>
+                  </button>
+                </li>
+              ))}
+            </ul>
+          )}
+
+        </div>
+      </div>
     </div>
   );
 };
 
-export default MediaSection;
+export default NavigationBar;
