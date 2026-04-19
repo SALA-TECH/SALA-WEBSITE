@@ -15,13 +15,8 @@ const navItems: NavItem[] = [
   { label: "Projects", href: "/projects" },
   { label: "Media", href: "/media" },
   { label: "Contact", href: "/contact" },
-  {
-    label: "Pages",
-    subItems: [
-      { label: "Online Library", href: "/library" },
-      { label: "News", href: "/news" },
-    ],
-  },
+  { label: "Online Library", href: "/library" },
+  { label: "News", href: "/news" }
 ];
 
 const NavigationBar: React.FC = () => {
@@ -101,10 +96,10 @@ const NavigationBar: React.FC = () => {
             )}
           </ul>
 
-          {/* Desktop Login button — hidden on mobile */}
+          {/* Desktop Login button — hidden on mobile 
           <Link to="/login" className="btn-donate nav-links-desktop">
             Login <FaArrowRight />
-          </Link>
+          </Link>*/}
 
           {/* Hamburger — mobile only */}
           <button className="mobile-hamburger" onClick={openSidebar} aria-label="Open menu">

@@ -228,28 +228,7 @@ const Home: React.FC = () => {
         </div>
       </section>
 
-      {/* ── Featured Initiative ── */}
-      <section className="initiative-section">
-        <div className="hero-overlay initiative-overlay" />
-        <div className="container initiative-content">
-          <span className="subtitle-badge initiative-badge">Active Campaign</span>
-          <h2 className="initiative-title">Apply for the 2026 Youth Mentorship Programme</h2>
-          <p className="initiative-text">
-            Applications are open for high school learners, university students, and
-            early-career professionals. Connect with an experienced mentor in your field
-            and take the next step in your journey.
-          </p>
-          <div className="initiative-actions">
-            <Link to="/contact" className="btn-primary" style={{ textDecoration: 'none' }}>
-              Apply Now <FaArrowRight />
-            </Link>
-            <Link to="/about" className="btn-outline" style={{ textDecoration: 'none' }}>
-              Learn More <FaArrowRight />
-            </Link>
-          </div>
-        </div>
-      </section>
-
+     
       {/* ── News ── */}
       <section className="news-section">
         <div className="container">

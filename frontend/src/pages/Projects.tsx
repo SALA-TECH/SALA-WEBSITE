@@ -184,7 +184,7 @@ const Projects: React.FC = () => {
               </div>
               <div style={{ textAlign: 'center', padding: '24px', backgroundColor: 'var(--bg-light)', borderRadius: '8px' }}>
                 <FaGraduationCap style={{ fontSize: '32px', color: 'var(--primary-orange)', marginBottom: '12px' }} />
-                <h3 style={{ fontSize: '28px', fontWeight: '800', color: 'var(--text-dark)' }}>2,500+</h3>
+                <h3 style={{ fontSize: '28px', fontWeight: '800', color: 'var(--text-dark)' }}>1,200+</h3>
                 <p style={{ fontSize: '14px', color: 'var(--text-grey)' }}>Students Impacted</p>
               </div>
               <div style={{ textAlign: 'center', padding: '24px', backgroundColor: 'var(--bg-light)', borderRadius: '8px' }}>
