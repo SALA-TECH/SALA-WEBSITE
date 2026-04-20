@@ -2,25 +2,24 @@ import React, { useState } from 'react';
 import NavigationBar from '../components/NavigationBar';
 import { FaPlay } from 'react-icons/fa';
 
-import image1 from '../../public/images/IMG-20250702-WA0031.jpg';
-import image2 from '../../public/images/IMG-20250703-WA0040.jpg';
-import image3 from '../../public/images/IMG-20250703-WA0056.jpg';
-import image4 from '../../public/images/IMG-20250703-WA0113.jpg';
-import image5 from '../../public/images/IMG-20250715-WA0002.jpg';
-import image6 from '../../public/images/IMG-20250829-WA0112.jpg';
-import image7 from '../../public/images/IMG-20251230-WA0005.jpg';
+import image1 from '../../public/images/Outreach/IMG-20250702-WA0031.jpg';
+import image2 from '../../public/images/Outreach/IMG-20250703-WA0040.jpg';
+import image3 from '../../public/images/Outreach/IMG-20250703-WA0056.jpg';
+import image4 from '../../public/images/Events/IMG-20250703-WA0113.jpg';
+import image5 from '../../public/images/Graduation/IMG-20250715-WA0002.jpg';
+import image6 from '../../public/images/Events/IMG-20250829-WA0112.jpg';
+import image7 from '../../public/images/Events/IMG-20251230-WA0005.jpg';
 
 // ── Photo data ──
 const photos = [
-  { id: 1, src: image1, alt: "SALA community event",       category: "Events"      },
+  { id: 1, src: image1, alt: "SALA community event",       category: "Outreach"    },
   { id: 2, src: image2, alt: "SALA outreach visit",        category: "Outreach"    },
   { id: 3, src: image3, alt: "SALA volunteers group",      category: "Outreach"    },
-  { id: 4, src: image4, alt: "Graduation celebration",     category: "Graduations" },
-  { id: 5, src: image5, alt: "Youth workshop session",     category: "Events"      },
-  { id: 6, src: image6, alt: "School visit Pondoland",     category: "Outreach"    },
-  { id: 7, src: image7, alt: "Annual SALA gathering",      category: "Events"      },
-  { id: 8, src: image2, alt: "Mentorship programme",       category: "Events"      },
-  { id: 9, src: image3, alt: "Graduate members 2025",      category: "Graduations" },
+  { id: 4, src: image4, alt: "Graduation celebration",     category: "Events"      },
+  { id: 5, src: image5, alt: "Youth workshop session",     category: "Graduations" },
+  { id: 6, src: image6, alt: "School visit Pondoland",     category: "Events"      },
+  { id: 7, src: image7, alt: "Annual SALA gathering",      category: "Events"      }
+  
 ];
 
 // ── Video data (YouTube embed IDs — replace with real ones) ──

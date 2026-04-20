@@ -1,7 +1,7 @@
 import React from "react";
 
-import image2 from '../../public/images/IMG-20250703-WA0040.jpg'
-import image3 from '../../public/images/IMG-20250703-WA0056.jpg'
+import image2 from '../../public/images/Outreach/IMG-20250703-WA0040.jpg'
+import image3 from '../../public/images/Outreach/IMG-20250703-WA0056.jpg'
 
 const MediaSection: React.FC = () => {
 

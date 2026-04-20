@@ -1,7 +1,7 @@
 import React from "react";
 import NavigationBar from "../components/NavigationBar";
-import image2 from "../../public/images/IMG-20250703-WA0040.jpg";
-import image3 from "../../public/images/IMG-20250703-WA0056.jpg";
+import image2 from "../../public/images/Outreach/IMG-20250703-WA0040.jpg";
+import image3 from "../../public/images/Outreach/IMG-20250703-WA0056.jpg";
 import Azande from "../../public/images/Leadership/Azande 2026-04-20 at 10.14.05.jpeg";
 import Bongo from "../../public/images/Leadership/Bongo 2026-04-19 at 23.14.46.jpeg";
 import Gwiba from "../../public/images/Leadership/Gwiba 2026-04-19 at 22.57.03.jpeg";
