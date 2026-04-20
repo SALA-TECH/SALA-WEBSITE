@@ -7,12 +7,13 @@ import Bongo from "../../public/images/Leadership/Bongo 2026-04-19 at 23.14.46.j
 import Gwiba from "../../public/images/Leadership/Gwiba 2026-04-19 at 22.57.03.jpeg";
 import Mazisi from "../../public/images/Leadership/Mazisi 2026-04-19 at 22.48.58.jpeg";
 import Nosihle from "../../public/images/Leadership/Nosihle Image 2026-04-20 at 11.59.27.jpeg";
+import Siviwe from "../../public/images/Leadership/Siviwe 2026-04-21 at 00.16.07.jpeg"
 
 /* ─────────────────────────────
    Data (keep this separate)
 ───────────────────────────── */
 const leadershipTeam = [
-  { name: "Siviwe Maqutywa", role: "Chairperson", image: image2 },
+  { name: "Siviwe Maqutywa", role: "Chairperson", image: Siviwe },
   { name: "Mazisi Bangani", role: "Secretary General", image: Mazisi },
   { name: "Nosihle Lalemini", role: "Deputy Secretary General", image: Nosihle },
   { name: "Azande Duna", role: "Treasury General", image: Azande },
