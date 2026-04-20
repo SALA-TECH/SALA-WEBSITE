@@ -2,17 +2,22 @@ import React from "react";
 import NavigationBar from "../components/NavigationBar";
 import image2 from "../../public/images/IMG-20250703-WA0040.jpg";
 import image3 from "../../public/images/IMG-20250703-WA0056.jpg";
+import Azande from "../../public/images/Leadership/Azande 2026-04-20 at 10.14.05.jpeg";
+import Bongo from "../../public/images/Leadership/Bongo 2026-04-19 at 23.14.46.jpeg";
+import Gwiba from "../../public/images/Leadership/Gwiba 2026-04-19 at 22.57.03.jpeg";
+import Mazisi from "../../public/images/Leadership/Mazisi 2026-04-19 at 22.48.58.jpeg";
+import Nosihle from "../../public/images/Leadership/Nosihle Image 2026-04-20 at 11.59.27.jpeg";
 
 /* ─────────────────────────────
    Data (keep this separate)
 ───────────────────────────── */
 const leadershipTeam = [
   { name: "Siviwe Maqutywa", role: "Chairperson", image: image2 },
-  { name: "Phelisa Ntayiya", role: "Deputy Chairperson", image: image3 },
-  { name: "Mazisi Bangani", role: "Secretary General", image: image2 },
-  { name: "Azande Duna", role: "Treasury General", image: image3 },
-  { name: "Bongolethu Klaas", role: "Deputy Treasury General", image: image3 },
-  { name: "Gwiba Nokenge", role: "Chief Convenor", image: image3 },
+  { name: "Mazisi Bangani", role: "Secretary General", image: Mazisi },
+  { name: "Nosihle Lalemini", role: "Deputy Secretary General", image: Nosihle },
+  { name: "Azande Duna", role: "Treasury General", image: Azande },
+  { name: "Bongolethu Klaas", role: "Deputy Treasury General", image: Bongo },
+  { name: "Gwiba Nokenge", role: "Chief Convenor", image: Gwiba },
 ];
 
 const subCommittees = [
@@ -77,16 +82,11 @@ const MissionVision: React.FC = () => (
       </div>
 
       <div className="about-content">
-        <h2 className="section-title">Our Mission</h2>
+        <h2 className="section-title">Our Mission and Objectives</h2>
         <p className="section-text">
-          To provide a platform for individuals from disadvantaged backgrounds
-          through career, business, and community development.
-        </p>
-
-        <h2 className="section-title">Our Vision</h2>
-        <p className="section-text">
-          To create a future where everyone has equal access to opportunities,
-          empowerment, and success.
+          SALA was established to provide a platform for its members including high school learners, university students,
+           professionals and entrepreneurs to organise themselves to fight many socio-economic ills bedevilling their hometowns. 
+           This would be achieved through many programs centred around three main objectives <strong>Career Development, Business Development, & Community Development</strong>.
         </p>
       </div>
     </div>

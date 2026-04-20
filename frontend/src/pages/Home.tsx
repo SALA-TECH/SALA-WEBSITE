@@ -8,7 +8,7 @@ import { Link } from 'react-router-dom';
 const slides = [
   {
     title: "South African Legacy Association",
-    text: "A non-profit organization with over 700 members, including young professionals, students, and entrepreneurs from diverse backgrounds like Law, Medicine, and Engineering.",
+    text: "SALA is a registered NPO established in 2022 by a diverse group of professionals and university students from various fields, including law, accounting, medicine, science and engineering. Currently, we are a strategic collective of over 670 dedicated professionals, entrepreneurs and university students all from the Mpondo heartlands Lusikisiki, Ntabankulu, Ngqeleni, Bizana, Libode, Flagstaff, and Port St. Johns. The leading profession in our organization being health science (120+ members), humanities (100+ members), engineering (80+ members) and accounting (60+ members). Our culture and identity are wrapped in the values of Upliftment, Collaboration and Innovation. ",
   },
   {
     title: "Empowering Communities",
